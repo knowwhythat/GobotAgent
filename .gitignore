@@ -1,0 +1,7 @@
+.idea
+client/.idea
+client/build
+client/frontend/node_modules
+server/.idea
+server/venv
+server/dist
