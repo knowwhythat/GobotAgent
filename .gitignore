@@ -5,3 +5,4 @@ client/frontend/node_modules
 server/.idea
 server/venv
 server/dist
+build

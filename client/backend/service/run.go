@@ -22,6 +22,13 @@ var agentServerPort = 8888
 var agentConn *websocket.Conn
 
 func ExecuteUserTask(ctx context.Context, userInput string) error {
+	apiBase := viper.GetString(LLMApiBase)
+	modelName := viper.GetString(LLMModelName)
+	apiKey := viper.GetString(LLMApiKey)
+	configBrowserPath := viper.GetString(ConfigBrowserPath)
+	if len(apiBase) == 0 || len(modelName) == 0 || len(apiKey) == 0 {
+		return errors.New("请先配置模型参数")
+	}
 	err := checkAgentConn(ctx)
 	if err != nil {
 		return err
@@ -31,13 +38,7 @@ func ExecuteUserTask(ctx context.Context, userInput string) error {
 	sendMessage["message_id"] = messageId
 	data := make(map[string]interface{})
 	sendMessage["method"] = "execute_task"
-	apiBase := viper.GetString(LLMApiBase)
-	modelName := viper.GetString(LLMModelName)
-	apiKey := viper.GetString(LLMApiKey)
-	configBrowserPath := viper.GetString(ConfigBrowserPath)
-	if len(apiBase) == 0 || len(modelName) == 0 || len(apiKey) == 0 {
-		return errors.New("请先配置模型参数")
-	}
+
 	data["task"] = userInput
 	data["apiBase"] = apiBase
 	data["modelName"] = modelName
@@ -94,7 +95,7 @@ func checkAgentConn(ctx context.Context) error {
 		go startAgentServerCommand()
 		time.Sleep(time.Second)
 	}
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 30; i++ {
 		if agentConn == nil {
 			Logger.Logger.Info().Msgf("agentServerPort: %d", agentServerPort)
 			conn, _, err := websocket.DefaultDialer.Dial(fmt.Sprintf("ws://127.0.0.1:%d/ws", agentServerPort), nil)

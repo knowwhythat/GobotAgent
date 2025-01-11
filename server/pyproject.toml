@@ -7,7 +7,7 @@ dependencies = [
     "browser-use",
     "playwright",
     "lxml_html_clean",
-    "websocket",
+    "websockets",
     "psutil"
 ]
 authors = [

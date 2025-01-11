@@ -74,19 +74,25 @@ const Setting: React.FC<SettingProps> = ({isOpen, onClose}) => {
                     <div>
                         <Typography.Text className={"w-32"}>API_BASE_URL</Typography.Text>
                         <Space.Compact style={{width: '100%'}}>
-                            <Input name="apiBaseUrl" value={settingData.apiBaseUrl} placeholder={"API_BASE_URL"}/>
+                            <Input name="apiBaseUrl" value={settingData.apiBaseUrl} onChange={(e) => {
+                                handleValueChange(e.target.name, e.target.value)
+                            }} placeholder={"API_BASE_URL"}/>
                         </Space.Compact>
                     </div>
                     <div>
                         <Typography.Text className={"w-32"}>API_KEY</Typography.Text>
                         <Space.Compact style={{width: '100%'}}>
-                            <Input name="apiKey" value={settingData.apiKey} placeholder={"API_KEY"}/>
+                            <Input name="apiKey" value={settingData.apiKey} onChange={(e) => {
+                                handleValueChange(e.target.name, e.target.value)
+                            }} placeholder={"API_KEY"}/>
                         </Space.Compact>
                     </div>
                     <div>
                         <Typography.Text className={"w-32"}>模型名称</Typography.Text>
                         <Space.Compact style={{width: '100%'}}>
-                            <Input name="modelName" value={settingData.modelName} placeholder={"模型名称"}/>
+                            <Input name="modelName" value={settingData.modelName} onChange={(e) => {
+                                handleValueChange(e.target.name, e.target.value)
+                            }} placeholder={"模型名称"}/>
                         </Space.Compact>
                     </div>
                 </Flex>

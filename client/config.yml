@@ -1,9 +1,0 @@
-basic:
-    browser_path: C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
-    data_path: C:\Users\ADMINI~1\AppData\Local\Temp\data\
-    log_level: Info
-    python_path: D:\code\BrowserAgent\server\venv\Scripts\python.exe
-llm:
-    api_base: https://api.deepseek.com
-    api_key: sk-61a1bf37c2674f2fa82ee3b0b894da85
-    model_name: deepseek-chat
