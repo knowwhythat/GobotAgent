@@ -1,0 +1,25 @@
+[project]
+name = "gobot_agent"
+version = "0.1.1"
+description = "gobot_agent library"
+requires-python = ">=3.13"
+dependencies = [
+    "browser-use",
+    "playwright",
+    "lxml_html_clean",
+    "websocket",
+    "psutil"
+]
+authors = [
+    { name = "gobot" }
+]
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
